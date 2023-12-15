@@ -11,19 +11,20 @@ export default function Home() {
   if (error) {
     console.log(error.message);
   }
-  if (data.quotes.length == 0) {
+  if (data && data.quotes.length == 0) {
     return <h2>No Quotes available</h2>;
   }
   return (
     <div className="container">
-      {data.quotes.map((quote) => {
-        return (
-          <blockquote>
-            <h6>{quote.name}</h6>
-            <p className="right-align">~{quote.by.firstName}</p>
-          </blockquote>
-        );
-      })}
+      {data &&
+        data.quotes.map((quote) => {
+          return (
+            <blockquote>
+              <h6>{quote.name}</h6>
+              <p className="right-align">~{quote.by.firstName}</p>
+            </blockquote>
+          );
+        })}
     </div>
   );
 }
